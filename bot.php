@@ -10,10 +10,9 @@ if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
-		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-      if($event['source']['userId'] == 'U2ac1c54ff5ae78e18042a8c135a2bea9'){
+
         // Get text sent
-        $text = 'ตี๋ มึง หุบปากไปเลย มึงอยู่เงียบๆไป';
+        $text = $event['message']['type'];
 
         // Get replyToken
         $replyToken = $event['replyToken'];
@@ -43,9 +42,6 @@ if (!is_null($events['events'])) {
         curl_close($ch);
 
         echo $result . "\r\n";
-      }
-
-		}
 
 	}
 }
