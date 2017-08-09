@@ -12,7 +12,7 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 
         // Get text sent
-        $text = $event['message']['text'] + " /" +$event['message']['id']+ " /" +$event['message']['type'];
+        //$text = $event['message']['text'] + " /" +$event['message']['id']+ " /" +$event['message']['type'];
 
         // Get replyToken
         $replyToken = $event['replyToken'];
@@ -20,8 +20,8 @@ if (!is_null($events['events'])) {
         // Build message to reply back
         $messages = [
           'type' => 'sticker',
-          'stickerId' =>'2268',
-          'packageId' =>'530' 
+          'stickerId' =>'2',
+          'packageId' =>'1'
         ];
 
         // Make a POST Request to Messaging API to reply to sender
