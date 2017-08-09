@@ -11,37 +11,40 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-			// Get text sent
-			$text = $event['message']['text'];
-      $text2 = $event['source']['userId'];
-			// Get replyToken
-			$replyToken = $event['replyToken'];
+      if($event['source']['userId'] == 'U2ac1c54ff5ae78e18042a8c135a2bea9'){
+        // Get text sent
+        $text = 'ตี๋ มึง หุบปากไปเลย มึงอยู่เงียบๆไป';
 
-			// Build message to reply back
-			$messages = [
-				'type' => 'text',
-				'text' => $text2
-			];
+        // Get replyToken
+        $replyToken = $event['replyToken'];
 
-			// Make a POST Request to Messaging API to reply to sender
-			$url = 'https://api.line.me/v2/bot/message/reply';
-			$data = [
-				'replyToken' => $replyToken,
-				'messages' => [$messages],
-			];
-			$post = json_encode($data);
-			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+        // Build message to reply back
+        $messages = [
+          'type' => 'text',
+          'text' => $text2
+        ];
 
-			$ch = curl_init($url);
-			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-			$result = curl_exec($ch);
-			curl_close($ch);
+        // Make a POST Request to Messaging API to reply to sender
+        $url = 'https://api.line.me/v2/bot/message/reply';
+        $data = [
+          'replyToken' => $replyToken,
+          'messages' => [$messages],
+        ];
+        $post = json_encode($data);
+        $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
-			echo $result . "\r\n";
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        echo $result . "\r\n";
+      }
+
 		}
 
 	}
