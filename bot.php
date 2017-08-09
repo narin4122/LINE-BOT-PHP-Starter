@@ -23,13 +23,7 @@ if (!is_null($events['events'])) {
           'type' => 'sticker',
           'stickerId' =>'2',
           'packageId' =>'1'
-          },
-          {
-            'type' => 'text',
-            'text' => 'สวัสดี'
-
           }
-
         ];
 
         // Make a POST Request to Messaging API to reply to sender
